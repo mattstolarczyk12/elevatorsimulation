@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
-// Node JS inheritance required for elevator simulation
+// standard const statements used in my js script files 
+// parsing arguments for input in this case, number of floors, elevators, max numb trips befor maint, etc.
 const program = require('commander');
 const {prompt} = require('inquirer');
 
-//elevator control implementation
+//elevator control JS requirement
 const Controller = require('./mjs-controller');
 
 // aka main for elevator control instance
 program
-    .version('1.0.0')
+    .version('1.0.0')  // use major.minor.path terminology so in this case 1.0.0
     .option('-f --floors', 'number of floors')
     .option('-e --elevators', 'number of elevators')
     .option('-t --trips', 'max  number of elevator trips before maintenance is needed')

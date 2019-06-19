@@ -1,7 +1,7 @@
 // with strict mode, you can not, for example, use undeclared variables.
 'use strict';
 
-// Node JS inheritance required for elevator simulation
+// Node JS requirement for elevator simulation for events
 const events = require('events');
 
 // elevator states
