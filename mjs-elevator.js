@@ -1,7 +1,7 @@
 // with strict mode, you can not, for example, use undeclared variables.
 'use strict';
 
-// Node JS Inheritance Required for Elevator Simulation
+// Node JS inheritance required for elevator simulation
 const events = require('events');
 
 // elevator states
@@ -18,7 +18,7 @@ const DIRECTIONS = {
     DOWN: -1
 }
 
-// elevator class defintion and "this..." instance 
+// main elevator class defintion and "this..." instance 
 class Elevator extends events.EventEmitter {
     constructor(id, maxFloors, maxTrips) {
         this.id = id;
@@ -36,7 +36,7 @@ class Elevator extends events.EventEmitter {
         this.numFloorsPassed = 0;
     }
 
-	// get elevator number
+	// get elevator id
     getId() {
         return this.id;
     }
@@ -80,7 +80,7 @@ class Elevator extends events.EventEmitter {
         }
 		// check if elevator already at floor then open door
         else if( currentFloor === floor ) {
-            // we're already here.  open the doors.
+            // direction stopped and open the elevator door
             this.direction = DIRECTIONS.STOPPED;
             openDoors();
             return;
@@ -118,7 +118,7 @@ class Elevator extends events.EventEmitter {
                     emit('changeFloor', i);
                 }
             }
-            // we've reached a stop.  open the doors and load/unload.
+            // elevator reached floor - open the door
             emit('openDoors');
             openAndCloseDoors();
         }
@@ -159,7 +159,7 @@ class Elevator extends events.EventEmitter {
         this.doorsOpen = false;
         emit('closeDoors');
     }
-	// elevator done trip and chaeck for max trips for maintenance mode
+	// elevator done trip and check for max trips for maintenance mode
     endTrip() {
         // Check to see if we've reached 100 trips.
         if( this.numTrips == this.maxTrips ) {

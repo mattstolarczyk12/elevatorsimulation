@@ -47,15 +47,15 @@ class ElevatorController {
     }
 
     request(floor) {
-        // Pick which elevator we should use.
+        // Pick which elevator we should use
         let index = findClosest(floor);
         let elevator = this.elevators[index];
 
-        // if it's already moving, add a stop.
+        // if it is already moving, add a stop
         if( elevator.getState() == STATES.MOVING ) {
             elevator.addStop(floor);
         }
-        // start the elevator on a trip.
+        // start the elevator on a trip
         else {
             elevator.startTrip(floor);
         }
@@ -99,6 +99,7 @@ class ElevatorController {
                     //should only happen near the end of a trip.  continue.
                     continue;
                 }
+				// in between floors
                 if( isBetween( next.getCurrentFloor(), lastStop ) ) {
                     return next.getId();
                 }
@@ -122,6 +123,7 @@ class ElevatorController {
                 closest = next;
             }
         }
+		// return closest elevator
         return closest.getId();
     }
 
