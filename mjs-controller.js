@@ -8,11 +8,12 @@ const {Elevator} = require('./mjs-elevator');
 class ElevatorController {
 
     constructor(numFloors, numElevators, maxTrips) {
-        this.maxFloors = numFloors;
-        this.maxTrips = maxTrips;
+        this.maxFloors = numFloors;  // input param passed
+        this.maxTrips = maxTrips;    // input param passed
 
-        this.elevators = [];
-        this.queue = [];
+        // construct elevator and queue for request up/down to/from floor
+		this.elevators = [];  
+        this.queue = [];       
 
         // init the elevators
         for( var i = 0 ; i < numElevators ; i++ ) {
@@ -45,7 +46,7 @@ class ElevatorController {
             })
         }
     }
-
+	// elevator request for given floor
     request(floor) {
         // Pick which elevator we should use
         let index = findClosest(floor);

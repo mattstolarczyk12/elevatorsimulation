@@ -22,16 +22,18 @@ const DIRECTIONS = {
 class Elevator extends events.EventEmitter {
     constructor(id, maxFloors, maxTrips) {
         this.id = id;
-        this.maxFloors = maxFloors;
-        this.maxTrips = maxTrips;
+        this.maxFloors = maxFloors; // input param passed
+        this.maxTrips = maxTrips;	// input param passed
 
-        this.currentFloor = 1;
+        //starting floor and stop/state idle/direction stopped/door closed
+		this.currentFloor = 1;
         this.stops = [];
 
         this.state = STATES.IDLE;
         this.direction = DIRECTIONS.STOPPED;
         this.doorsOpen = false;
         
+		// counter for trips and floor passed for elevator
         this.numTrips = 0;
         this.numFloorsPassed = 0;
     }
@@ -172,8 +174,8 @@ class Elevator extends events.EventEmitter {
             this.state = STATES.IDLE;
             this.direction = DIRECTIONS.STOPPED;
         }
-	// elevator service idle and direction stopped and service completed
     }
+	// elevator service idle and direction stopped and service completed
     service(timeout) {
         emit('serviceStarted');
         setTimeout(() => {
